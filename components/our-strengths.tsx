@@ -24,7 +24,7 @@ export default function OurStrengths() {
 
   return (
     <div id="vision" className="w-full py-10 px-3 bg-gray-50">
-      <div className="relative bg-gradient-to-r from-[#0a1a2e] to-[#0f2a47] text-white py-16 md:py-24 overflow-hidden">
+      {/* <div className="relative bg-gradient-to-r from-[#0a1a2e] to-[#0f2a47] text-white py-16 md:py-24 overflow-hidden">
         <div className="absolute top-0 left-0 w-96 h-96 opacity-10">
           <svg viewBox="0 0 200 200" className="w-full h-full">
             <line x1="0" y1="0" x2="200" y2="200" stroke="#d4af37" strokeWidth="3" />
@@ -35,7 +35,12 @@ export default function OurStrengths() {
         <div className="relative max-w-7xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">OUR VISION</h1>
         </div>
-      </div>
+      </div> */}
+
+      <h2 className="text-center text-3xl md:text-4xl font-bold text-navy-900 mb-12 md:mb-16 uppercase">
+        OUR THOUGHTS
+      </h2>
+
       <div className="max-w-7xl mx-auto py-3">
         <div className="text-center mb-12">
           <p className="text-blue-600 italic text-base md:text-lg mb-4">
