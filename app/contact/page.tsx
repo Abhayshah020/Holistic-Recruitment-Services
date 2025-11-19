@@ -3,8 +3,8 @@ import Footer from '@/components/footer'
 import Navbar from '@/components/navbar'
 
 export const metadata = {
-    title: 'Contact Us - Tailored Workforce',
-    description: 'Get in touch with Tailored Workforce. Contact our team for recruitment services, employment opportunities, and more.',
+    title: 'Contact Us - Holistic Recruitment Services',
+    description: 'Get in touch with Holistic Recruitment Services. Contact our team for recruitment services, employment opportunities, and more.',
 }
 
 export default function ContactPage() {

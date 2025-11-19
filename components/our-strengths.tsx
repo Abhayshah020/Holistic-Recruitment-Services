@@ -8,7 +8,7 @@ export default function OurStrengths() {
     {
       title: 'Innovation',
       icon: '⚙️',
-      description: 'We understand that hiring can be a difficult process, which is why we\'ve developed innovative solutions to make it easier for you. Our approach combines the latest technology with tailored recruiting services to bring you the best candidates for your job openings.'
+      description: 'We understand that hiring can be a difficult process, which is why we\'ve developed innovative solutions to make it easier for you. Our approach combines the latest technology with holistic recruiting services to bring you the best candidates for your job openings.'
     },
     {
       title: 'Experience',

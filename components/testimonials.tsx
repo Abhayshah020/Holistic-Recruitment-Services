@@ -14,14 +14,14 @@ interface Review {
 const reviews: Review[] = [
     {
         review:
-            "Staff at Tailored have gone above and beyond to assist me in finding this position. They were consistent in mentoring me and coaching me in my interview skills promptly, and took the time to assist me outside of office hours which I very much appreciate.",
+            "Staff at Holistic have gone above and beyond to assist me in finding this position. They were consistent in mentoring me and coaching me in my interview skills promptly, and took the time to assist me outside of office hours which I very much appreciate.",
         rate: 4.5,
         name: "Jack Thompson",
         position: "Office Manager, Sydney Tech Solutions",
     },
     {
         review:
-            "In my 8 years of experience working at various management positions in companies around the world, Hellen (Tailored Director) has to be the best boss I've ever worked for in my life so far. She was so understanding, supportive and best mentor over the time I've worked for them. They do their utmost to place all those who come through them. I'd highly recommend this place to anyone seeking job if you are reliable, hardworking and have positive attitude to work.",
+            "In my 8 years of experience working at various management positions in companies around the world, Hellen (Holistic Director) has to be the best boss I've ever worked for in my life so far. She was so understanding, supportive and best mentor over the time I've worked for them. They do their utmost to place all those who come through them. I'd highly recommend this place to anyone seeking job if you are reliable, hardworking and have positive attitude to work.",
         rate: 5,
         name: "Sarah O'Conors",
         position: "Operations Director, Harbour Lane Law Firm",
@@ -35,21 +35,21 @@ const reviews: Review[] = [
     },
     {
         review:
-            "Tailored gave me a chance when I was in a bad way. Through them I found the best job I've ever had. Most of my previous jobs I've only lasted one year but I've been in this job 3 years. If you're a good worker they have work available. If you're unreliable or not a good worker then they'll stop giving you shifts which might be what happened with the people complaining here.",
+            "Holistic gave me a chance when I was in a bad way. Through them I found the best job I've ever had. Most of my previous jobs I've only lasted one year but I've been in this job 3 years. If you're a good worker they have work available. If you're unreliable or not a good worker then they'll stop giving you shifts which might be what happened with the people complaining here.",
         rate: 3.5,
         name: "Mia Campbell",
         position: "Practice Manager, Bondi Family Medical Centre",
     },
     {
         review:
-            "Staff at Tailored have gone above and beyond to assist me in finding this position. They were consistent in mentoring me and coaching me in my interview skills promptly, and took the time to assist me outside of office hours which I very much appreciate.",
+            "Staff at Holistic have gone above and beyond to assist me in finding this position. They were consistent in mentoring me and coaching me in my interview skills promptly, and took the time to assist me outside of office hours which I very much appreciate.",
         rate: 4.5,
         name: "Jack Thompson",
         position: "Office Manager, Sydney Tech Solutions",
     },
     {
         review:
-            "In my 8 years of experience working at various management positions in companies around the world, Hellen (Tailored Director) has to be the best boss I've ever worked for in my life so far. She was so understanding, supportive and best mentor over the time I've worked for them. They do their utmost to place all those who come through them. I'd highly recommend this place to anyone seeking job if you are reliable, hardworking and have positive attitude to work.",
+            "In my 8 years of experience working at various management positions in companies around the world, Hellen (Holistic Director) has to be the best boss I've ever worked for in my life so far. She was so understanding, supportive and best mentor over the time I've worked for them. They do their utmost to place all those who come through them. I'd highly recommend this place to anyone seeking job if you are reliable, hardworking and have positive attitude to work.",
         rate: 5,
         name: "Sarah O'Conors",
         position: "Operations Director, Harbour Lane Law Firm",
@@ -63,7 +63,7 @@ const reviews: Review[] = [
     },
     {
         review:
-            "Tailored gave me a chance when I was in a bad way. Through them I found the best job I've ever had. Most of my previous jobs I've only lasted one year but I've been in this job 3 years. If you're a good worker they have work available. If you're unreliable or not a good worker then they'll stop giving you shifts which might be what happened with the people complaining here.",
+            "Holistic gave me a chance when I was in a bad way. Through them I found the best job I've ever had. Most of my previous jobs I've only lasted one year but I've been in this job 3 years. If you're a good worker they have work available. If you're unreliable or not a good worker then they'll stop giving you shifts which might be what happened with the people complaining here.",
         rate: 3.5,
         name: "Mia Campbell",
         position: "Practice Manager, Bondi Family Medical Centre",

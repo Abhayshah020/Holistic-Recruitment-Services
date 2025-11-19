@@ -3,7 +3,7 @@ import Footer from '@/components/footer'
 import Navbar from '@/components/navbar'
 
 export const metadata = {
-    title: 'Post Your Job - Tailored Workforce',
+    title: 'Post Your Job - Holistic Recruitment Services',
     description: 'Post your job opening and connect with qualified candidates. Fill out our form to start your recruitment journey.',
 }
 

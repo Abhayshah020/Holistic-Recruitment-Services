@@ -11,8 +11,8 @@ import ValuesSection from '@/components/values-section'
 import WhyWorkWithUs from '@/components/why-work-with-us'
 
 export const metadata = {
-    title: 'About Us - Tailored Workforce',
-    description: 'Learn about Tailored Workforce, our mission, values, and the talented team behind our innovative recruitment solutions.',
+    title: 'About Us - Holistic Recruitment Services',
+    description: 'Learn about Holistic Recruitment Services, our mission, values, and the talented team behind our innovative recruitment solutions.',
 }
 
 export default function AboutPage() {
@@ -32,8 +32,8 @@ export default function AboutPage() {
                 <WhyWorkWithUs />
                 <OurStrengths />
                 <Statistics />
-                <ManagementTeam />
-                <ValuesSection />
+                {/* <ManagementTeam />
+                <ValuesSection /> */}
                 <TeamPhotos />
                 <IndustriesGrid />
                 <EmpolymentWithUs />

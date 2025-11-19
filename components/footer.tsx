@@ -147,7 +147,7 @@ export default function Footer() {
         <div className="border-t border-gray-700 pt-8">
           {/* Copyright */}
           <p className="text-gray-400 text-sm text-center md:text-left">
-            Copyright © 2023 Tailored Workforce all rights reserved.
+            Copyright © 2023 Holistic Recruitment Services all rights reserved.
           </p>
         </div>
       </div>

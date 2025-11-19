@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Tailored Workforce - Find Your Perfect Job',
+  title: 'Holistic Recruitment Services - Find Your Perfect Job',
   description: 'Connect extraordinary individuals with exceptional opportunities. Finding the perfect job has never been easier.',
   generator: 'v0.app',
   icons: {

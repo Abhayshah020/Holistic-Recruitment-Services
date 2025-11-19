@@ -3,7 +3,7 @@ export default function HowItWorks() {
     {
       number: 1,
       title: 'Post a Job in a specific industry',
-      description: 'Are you looking to find the ideal candidate for a vacancy within your company? Look no further than our job posting services, tailored especially for professionals seeking candidates in a specific industry.'
+      description: 'Are you looking to find the ideal candidate for a vacancy within your company? Look no further than our job posting services, holistic especially for professionals seeking candidates in a specific industry.'
     },
     {
       number: 2,

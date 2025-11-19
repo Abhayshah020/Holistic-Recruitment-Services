@@ -6,16 +6,16 @@ import { ServiceDetail } from "@/components/service-detail"
 const services = {
     'medical-recruitment': {
         title: 'MEDICAL RECRUITMENT',
-        shortDescription: 'In today\'s rapidly evolving healthcare industry, having the right workforce is crucial. That\'s where Tailored Workforce comes in. Our specialized medical recruitment services are designed to provide the perfect candidates for your specific needs.',
+        shortDescription: 'In today\'s rapidly evolving healthcare industry, having the right workforce is crucial. That\'s where Holistic Recruitment Services comes in. Our specialized medical recruitment solutions are designed to provide the ideal candidates for your organization’s specific needs.',
         backgroundImage: '/doctor-with-stethoscope.png',
         sections: [
             {
                 title: 'Understanding Healthcare Challenges',
-                content: 'As the healthcare industry continues to grow and evolve, the need for highly qualified medical professionals becomes increasingly important. That\'s where Tailored Workforce comes in. Our team of experienced recruiters is dedicated to finding the best candidates for your organization\'s medical staffing needs. We understand the unique challenges of the healthcare industry and work diligently to identify candidates who not only possess the necessary qualifications and skills, but who also align with your organization\'s values and culture. With Tailored Workforce, you can trust that you are getting top-notch professionals who are committed to providing exceptional care to your patients.'
+                content: 'As the healthcare industry continues to grow and evolve, the demand for highly qualified medical professionals becomes increasingly critical. Holistic Recruitment Services is here to address that need. Our team of experienced recruiters is dedicated to sourcing the best candidates for your organization’s medical staffing requirements. We understand the unique challenges faced by healthcare organizations and carefully identify professionals who not only have the required qualifications and skills, but also align with your organization\'s values and culture. With Holistic Recruitment Services, you can be confident that your team will include top-notch professionals committed to delivering exceptional patient care.'
             },
             {
                 title: 'Expert Recruitment Specialists',
-                content: 'As the medical field continues to evolve and grow, healthcare organizations must stay ahead of the curve by hiring the most qualified individuals to join their teams. That\'s where Tailored Workforce steps in. Our team of experienced recruiters specialize in finding top talent in the healthcare industry, ensuring that your organization has the staff it needs to thrive. Whether you\'re looking for nursing professionals, specialized medical staff, or executives to lead your organization, Tailored Workforce has the expertise to find the perfect fit. With our commitment to professionalism and personalized service, you can rest assured that your recruitment needs are in good hands with Tailored Workforce.'
+                content: 'In a continuously evolving medical landscape, healthcare organizations must hire the most capable individuals to ensure success. Holistic Recruitment Services provides that expertise. Our recruitment specialists focus on finding top talent across the healthcare industry, whether it’s nursing professionals, specialized medical staff, or executives to lead your organization. With a commitment to professionalism and personalized service, Holistic Recruitment Services ensures that your recruitment needs are met efficiently and effectively, helping your organization thrive with the right people in the right roles.'
             }
         ]
     },
