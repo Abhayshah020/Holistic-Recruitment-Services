@@ -71,7 +71,7 @@ export default function Footer() {
                   0411193729
                 </a>{" "},{" "}
                 <a href="tel:0413173504 " className="text-white font-bold text-lg hover:text-orange-500 transition-colors">
-                  0413173504 
+                  0413173504
                 </a>
               </div>
             </div>
@@ -147,7 +147,9 @@ export default function Footer() {
         <div className="border-t border-gray-700 pt-8">
           {/* Copyright */}
           <p className="text-gray-400 text-sm text-center md:text-left">
-            Copyright © 2023 Holistic Recruitment Services all rights reserved.
+            <a href="https://smsitsolutions.com.au/">
+              © {new Date().getFullYear()} Powered by SMS IT Solutions. All rights reserved.
+            </a>
           </p>
         </div>
       </div>
