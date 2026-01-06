@@ -157,11 +157,29 @@ export default function TablePage() {
         if (user) setUser(JSON.parse(user))
     }, [])
 
+    const handleFetch = async () => {
+        try {
+            await axiosClient.get("/recruitment-forms/").then(res => {
+                setMockData(res.data.data || [])
+            })
+        } catch (error) {
+            console.log("🚀 ~ handleFetch ~ error:", error)
+        }
+    }
+
+    const handleDelete = async (id: string) => {
+        try {
+            const res = await axiosClient.delete(`/recruitment-forms/${id}`)
+            handleFetch();
+        } catch (error) {
+            console.log("🚀 ~ handleFetch ~ error:", error)
+        }
+    }
+
     useEffect(() => {
-        axiosClient.get("/recruitment-forms/").then(res => {
-            setMockData(res.data.data || [])
-        })
+        handleFetch();
     }, [])
+
 
     return (
         <>
@@ -172,7 +190,7 @@ export default function TablePage() {
                 confirmText="Delete"
                 danger
                 onCancel={() => setDeleteId(null)}
-                onConfirm={() => deleteId && setDeleteId(null)}
+                onConfirm={() => deleteId && handleDelete(deleteId)}
             />
 
             <Navbar />

@@ -255,9 +255,15 @@ export default function RecruitmentForm({ id }: { id?: string }) {
       if (formData.frequentlyAskedQuestions)
         formDataToSend.append("frequentlyAskedQuestions", formData.frequentlyAskedQuestions);
 
-      await axiosClient.post("/recruitment-forms/", formDataToSend, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
+      if (id) {
+        await axiosClient.put(`/recruitment-forms/${id}`, formDataToSend, {
+          headers: { "Content-Type": "multipart/form-data" },
+        });
+      } else {
+        await axiosClient.post("/recruitment-forms/", formDataToSend, {
+          headers: { "Content-Type": "multipart/form-data" },
+        });
+      }
 
       router.push("/recruitment-forms");
     } catch (err: any) {

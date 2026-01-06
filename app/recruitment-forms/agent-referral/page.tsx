@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import Link from "next/link"
 import axiosClient from "@/lib/axiosClient"
+import ConfirmModal from "@/components/ConfirmModal"
 
 interface AgentReferral {
     id: number
@@ -18,6 +19,7 @@ interface AgentReferral {
 export default function AgentReferralList() {
     const [data, setData] = useState<AgentReferral[]>([])
     const [loading, setLoading] = useState(true)
+    const [deleteId, setDeleteId] = useState<any | null>(null)
 
     useEffect(() => {
         fetchData()
@@ -34,9 +36,28 @@ export default function AgentReferralList() {
         }
     }
 
+    const handleDelete = async (id: string) => {
+        try {
+            await axiosClient.delete(`/agent-referrals/${id}`)
+            fetchData();
+        } catch (error) {
+            console.log("🚀 ~ handleFetch ~ error:", error)
+        }
+    }
+
     return (
         <div className="p-4 sm:p-6 lg:p-8">
             {/* Header */}
+            <ConfirmModal
+                open={deleteId !== null}
+                title="Delete Record"
+                description="This action cannot be undone."
+                confirmText="Delete"
+                danger
+                onCancel={() => setDeleteId(null)}
+                onConfirm={() => deleteId && handleDelete(deleteId)}
+            />
+
             <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <h1 className="text-xl sm:text-2xl font-semibold">
                     Agent Referrals
@@ -101,6 +122,12 @@ export default function AgentReferralList() {
                                         >
                                             View
                                         </Link>
+                                        <button
+                                            onClick={()=> setDeleteId(item.id)}
+                                            className="font-medium text-black underline"
+                                        >
+                                            Delete
+                                        </button>
                                     </Td>
                                 </tr>
                             ))
