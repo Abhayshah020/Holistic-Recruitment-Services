@@ -212,48 +212,62 @@ export default function RecruitmentForm({ id }: { id?: string }) {
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setLoading(true)
-    setError("")
-    setSuccess(false)
+    e.preventDefault();
+    setLoading(true);
+    setError("");
+    setSuccess(false);
+
+    // Basic validation
+    const requiredFields = ["project", "salary", "workHours", "numberOfVacancies"];
+    for (const field of requiredFields) {
+      if (!formData[field as keyof typeof formData]) {
+        setError("Please fill all required fields");
+        setLoading(false);
+        return;
+      }
+    }
 
     try {
-      const formDataToSend = new FormData()
+      const formDataToSend = new FormData();
 
-      // Add all text fields
+      // Add text fields safely
       Object.entries(formData).forEach(([key, value]) => {
-        if (key !== "countryTags" && key !== "vacancyTypeTags" && !(value instanceof File)) {
-          formDataToSend.append(key, String(value))
+        if (
+          key !== "countryTags" &&
+          key !== "vacancyTypeTags" &&
+          !(value && typeof value === "object" && "name" in value)
+        ) {
+          formDataToSend.append(key, String(value ?? ""));
         }
-      })
+      });
 
-      // Add arrays as JSON
-      formDataToSend.append("countryTags", JSON.stringify(formData.countryTags))
-      formDataToSend.append("vacancyTypeTags", JSON.stringify(formData.vacancyTypeTags))
+      // Add arrays
+      formDataToSend.append("countryTags", JSON.stringify(formData.countryTags || []));
+      formDataToSend.append("vacancyTypeTags", JSON.stringify(formData.vacancyTypeTags || []));
 
       // Add files
-      if (formData.marketingFlyer) formDataToSend.append("marketingFlyer", formData.marketingFlyer)
-      if (formData.vacancyFlyer) formDataToSend.append("vacancyFlyer", formData.vacancyFlyer)
+      if (formData.marketingFlyer) formDataToSend.append("marketingFlyer", formData.marketingFlyer);
+      if (formData.vacancyFlyer) formDataToSend.append("vacancyFlyer", formData.vacancyFlyer);
       if (formData.candidateIdRequirements)
-        formDataToSend.append("candidateIdRequirements", formData.candidateIdRequirements)
-      if (formData.processFlowchart) formDataToSend.append("processFlowchart", formData.processFlowchart)
+        formDataToSend.append("candidateIdRequirements", formData.candidateIdRequirements);
+      if (formData.processFlowchart)
+        formDataToSend.append("processFlowchart", formData.processFlowchart);
       if (formData.frequentlyAskedQuestions)
-        formDataToSend.append("frequentlyAskedQuestions", formData.frequentlyAskedQuestions)
+        formDataToSend.append("frequentlyAskedQuestions", formData.frequentlyAskedQuestions);
 
       await axiosClient.post("/recruitment-forms/", formDataToSend, {
         headers: { "Content-Type": "multipart/form-data" },
       });
-      router.push("/recruitment-forms")
-      // setSuccess(true)
-      // setFormData(initialData)
-      // setTimeout(() => setSuccess(false), 5000)
+
+      router.push("/recruitment-forms");
     } catch (err: any) {
-      setError(err.message || "Something went wrong")
-      console.log("Error submitting form:", err)
+      setError(err.message || "Something went wrong");
+      console.log("Error submitting form:", err);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-accent/5 to-background py-12 px-4">
