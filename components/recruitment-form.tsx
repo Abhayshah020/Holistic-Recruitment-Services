@@ -221,7 +221,7 @@ export default function RecruitmentForm({ id }: { id?: string }) {
     const requiredFields = ["project", "salary", "workHours", "numberOfVacancies"];
     for (const field of requiredFields) {
       if (!formData[field as keyof typeof formData]) {
-        setError("Please fill all required fields");
+        setError(`Please fill all required fields : ${field}`);
         setLoading(false);
         return;
       }
