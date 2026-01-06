@@ -61,8 +61,8 @@ export default function Footer() {
             <div className="space-y-6">
               <div>
                 <p className="text-gray-400 text-sm mb-2">Email us</p>
-                <a href="mailto:info@holisticrecruitmentservices.com.au0411193729 and 0413173504 " className="text-white font-bold text-lg hover:text-orange-500 transition-colors">
-                  info@holisticrecruitmentservices.com.au
+                <a href="mailto:info@holisticrs.com.au0411193729 and 0413173504 " className="text-white font-bold text-lg hover:text-orange-500 transition-colors">
+                  info@holisticrs.com.au
                 </a>
               </div>
               <div>
@@ -134,11 +134,11 @@ export default function Footer() {
           <div>
             <h3 className="text-white font-bold text-lg mb-6">Services</h3>
             <ul className="space-y-3">
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">On Hire Services</a></li>
               <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Permanent Recruitment</a></li>
               <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Training To Placement</a></li>
               <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Aged Care Recruitment</a></li>
               <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Medical Recruitment</a></li>
+              <li><a href="/recruitment-forms" className="text-gray-300 hover:text-white transition-colors">Referral Information</a></li>
             </ul>
           </div>
         </div>

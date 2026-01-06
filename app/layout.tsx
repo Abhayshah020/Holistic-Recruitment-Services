@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import ProtectedPage from '@/components/ProtectedPage'
 
 export const metadata: Metadata = {
   title: 'Holistic Recruitment Services - Find Your Perfect Job',
@@ -32,7 +33,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`font-sans antialiased`}>
-        {children}
+        <ProtectedPage>
+          {children}
+        </ProtectedPage>
       </body>
     </html>
   )

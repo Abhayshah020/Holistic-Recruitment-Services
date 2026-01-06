@@ -176,8 +176,8 @@ export default function ContactSection() {
             {/* Email */}
             <div className="mb-8">
               <h4 className="font-bold text-gray-900 mb-2">Email</h4>
-              <a href="mailto:info@holisticrecruitmentservices.com.au" className="text-blue-500 hover:text-blue-700 font-semibold break-all">
-                info@holisticrecruitmentservices.com.au
+              <a href="mailto:info@holisticrs.com.au" className="text-blue-500 hover:text-blue-700 font-semibold break-all">
+                info@holisticrs.com.au
               </a>
             </div>
 
