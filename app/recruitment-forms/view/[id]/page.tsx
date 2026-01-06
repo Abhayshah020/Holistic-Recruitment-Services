@@ -1,15 +1,94 @@
 "use client"
 
-import { Card } from "@/components/ui/card"
+import Footer from "@/components/footer"
+import Navbar from "@/components/navbar"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { ArrowLeft, Briefcase, DollarSign, Clock, MapPin, FileText, ImageIcon, CheckCircle } from "lucide-react"
-import Link from "next/link"
+import { Card } from "@/components/ui/card"
 import axiosClient from "@/lib/axiosClient"
-import { useEffect, useState } from "react"
+import { ArrowLeft, Briefcase, CheckCircle, Clock, DollarSign, FileText, ImageIcon, MapPin } from "lucide-react"
+import Link from "next/link"
 import { useParams } from "next/navigation"
-import Navbar from "@/components/navbar"
-import Footer from "@/components/footer"
+import { useEffect, useState } from "react"
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
+
+
+function FilePreview({ filePath }: { filePath: string }) {
+    const [isOpen, setIsOpen] = useState(false)
+    const isImage = /\.(jpg|jpeg|png|gif|webp)$/i.test(filePath)
+
+    return (
+        <>
+            {/* Trigger Button */}
+            <button
+                onClick={() => setIsOpen(true)}
+                className="inline-flex items-center gap-2 px-3 py-1.5 text-xs sm:text-sm font-medium 
+                           text-white bg-primary rounded-md hover:bg-primary/90 transition-colors"
+            >
+                {isImage ? <ImageIcon size={14} /> : <FileText size={14} />}
+                <span className="hidden sm:inline">
+                    {isImage ? "View Image" : "View PDF"}
+                </span>
+                <span className="sm:hidden">View</span>
+            </button>
+
+            {/* Preview Dialog */}
+            <Dialog open={isOpen} onOpenChange={setIsOpen}>
+                <DialogContent
+                    className="
+                        w-[95vw] sm:w-auto
+                        max-w-[95vw] sm:max-w-4xl lg:max-w-5xl
+                        h-[90vh]
+                        overflow-hidden
+                    "
+                >
+                    <DialogHeader>
+                        <DialogTitle className="text-base sm:text-lg">
+                            File Preview
+                        </DialogTitle>
+                    </DialogHeader>
+
+                    {/* Image Preview */}
+                    {isImage ? (
+                        <div className="flex items-center justify-center h-full overflow-auto">
+                            <img
+                                src={`${process.env.NEXT_PUBLIC_IMG_URL}${filePath}` || "/file.svg"}
+                                alt="Preview"
+                                className="
+                                    max-h-[75vh]
+                                    w-auto
+                                    max-w-full
+                                    rounded-lg
+                                    object-contain
+                                "
+                            />
+                        </div>
+                    ) : (
+                        /* PDF Preview */
+                        <div className="flex flex-col h-full gap-3">
+                            <p className="text-center text-xs sm:text-sm text-muted-foreground">
+                                PDF Preview
+                            </p>
+
+                            <iframe
+                                src={`${process.env.NEXT_PUBLIC_IMG_URL}${filePath}`}
+                                className="
+                                    w-full
+                                    flex-1
+                                    rounded-lg
+                                    border
+                                    min-h-[300px]
+                                    sm:min-h-[500px]
+                                "
+                                title="PDF Preview"
+                            />
+                        </div>
+                    )}
+                </DialogContent>
+            </Dialog>
+        </>
+    )
+}
 
 export default function ViewPage() {
 
@@ -78,7 +157,7 @@ export default function ViewPage() {
         <>
             <Navbar />
             <div className="min-h-screen bg-gradient-to-br from-background via-accent/5 to-background py-10 px-4">
-                <div className="w-full pb-10 px-10 pt-16 md:pt-25 bg-background">
+                <div className="w-full pb-10  md:px-10 pt-16 md:pt-25 bg-background">
                     {/* Header */}
                     <div className="mb-8">
                         <Link href="/recruitment-forms">
@@ -313,15 +392,14 @@ export default function ViewPage() {
 
                         <div className="grid md:grid-cols-2 gap-8">
                             <div>
-                                <p className="text-xs font-semibold text-primary uppercase tracking-wide mb-2">
-                                    Documents Required for Job Offer / Work Permit
-                                </p>
-                                <p className="text-muted-foreground mb-6 whitespace-pre-wrap">{mockData.documentsRequiredJobOffer}</p>
+
+                                <p className="text-xs text-muted-foreground">Vacancy Flyer</p>
+                                <FilePreview filePath={mockData.vacancyFlyer} />
 
                                 <p className="text-xs font-semibold text-primary uppercase tracking-wide mb-2">
                                     Candidate ID/Document Requirements
                                 </p>
-                                <p className="text-muted-foreground mb-6 whitespace-pre-wrap">{mockData.candidateIdRequirements}</p>
+                                <FilePreview filePath={mockData.candidateIdRequirements} />
                             </div>
 
                             <div>
@@ -330,24 +408,11 @@ export default function ViewPage() {
                                     <div className="flex items-center gap-3 p-3 bg-primary/5 rounded-lg border border-border/30">
                                         <FileText className="w-5 h-5 text-primary" />
                                         <div>
-                                            <p className="text-sm font-medium text-foreground">{mockData.marketingFlyer}</p>
                                             <p className="text-xs text-muted-foreground">Marketing Flyer</p>
+                                            <FilePreview filePath={mockData.marketingFlyer} />
                                         </div>
                                     </div>
-                                    <div className="flex items-center gap-3 p-3 bg-primary/5 rounded-lg border border-border/30">
-                                        <ImageIcon className="w-5 h-5 text-primary" />
-                                        <div>
-                                            <p className="text-sm font-medium text-foreground">{mockData.vacancyFlyer}</p>
-                                            <p className="text-xs text-muted-foreground">Vacancy Flyer</p>
-                                        </div>
-                                    </div>
-                                    <div className="flex items-center gap-3 p-3 bg-primary/5 rounded-lg border border-border/30">
-                                        <FileText className="w-5 h-5 text-primary" />
-                                        <div>
-                                            <p className="text-sm font-medium text-foreground">{mockData.faq}</p>
-                                            <p className="text-xs text-muted-foreground">FAQ Document</p>
-                                        </div>
-                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -398,13 +463,25 @@ export default function ViewPage() {
 
                         <div className="grid md:grid-cols-2 gap-8">
                             <div>
-                                <p className="text-xs font-semibold text-primary uppercase tracking-wide mb-2">Process Flowchart</p>
-                                <p className="text-muted-foreground mb-6 whitespace-pre-wrap">{mockData.processFlowchart}</p>
+                                <div className="flex items-center gap-3 p-3 bg-primary/5 rounded-lg border border-border/30">
+                                    <ImageIcon className="w-5 h-5 text-primary" />
+                                    <div>
 
-                                <p className="text-xs font-semibold text-primary uppercase tracking-wide mb-2">
-                                    Frequently Asked Questions
-                                </p>
-                                <p className="text-muted-foreground whitespace-pre-wrap">{mockData.frequentlyAskedQuestions}</p>
+                                        <p className="text-xs font-semibold text-primary uppercase tracking-wide mb-2">
+                                            Process Flow Chart
+                                        </p>
+                                        <FilePreview filePath={mockData.processFlowchart} />
+                                    </div>
+                                </div>
+
+
+                                <div className="flex items-center gap-3 p-3 bg-primary/5 rounded-lg border border-border/30">
+                                    <FileText className="w-5 h-5 text-primary" />
+                                    <div>
+                                        <FilePreview filePath={mockData.frequentlyAskedQuestions} />
+                                        <p className="text-xs text-muted-foreground">FAQ Document</p>
+                                    </div>
+                                </div>
                             </div>
 
                             <div>

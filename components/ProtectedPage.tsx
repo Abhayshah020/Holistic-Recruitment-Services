@@ -12,9 +12,16 @@ export default function ProtectedPage({ children }: Props) {
   const pathname = usePathname();
 
   useEffect(() => {
+    // ✅ Public route (explicit allow)
+    if (pathname === "/recruitment-forms/agent-referral/create") {
+      return;
+    }
+
+    // 🔒 Protected routes
     const isProtectedRoute =
       pathname === "/recruitment-forms/create" ||
-      pathname.startsWith("/recruitment-forms/update");
+      pathname.startsWith("/recruitment-forms/update") ||
+      pathname.startsWith("/recruitment-forms/agent-referral");
 
     if (!isProtectedRoute) return;
 
@@ -29,7 +36,6 @@ export default function ProtectedPage({ children }: Props) {
 
     if (user.role !== "admin") {
       router.replace("/unauthorized-page");
-      return;
     }
   }, [pathname, router]);
 
