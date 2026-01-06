@@ -82,7 +82,7 @@ const initialData: RecruitmentFormData = {
   candidateIdRequirements: null,
   processFlowchart: null,
   frequentlyAskedQuestions: null,
-  referralLink: "",
+  referralLink: "https://holisticrs.com.au/recruitment-forms/agent-referral/create",
   candidatesReferredFor: "",
   candidatesInterviewingFor: "",
   referralLinkContact: "",
@@ -460,11 +460,11 @@ export default function RecruitmentForm({ id }: { id?: string }) {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="flex flex-col gap-2">
-                  <label className="text-sm font-semibold text-foreground">Marketing Flyer (PDF)</label>
+                  <label className="text-sm font-semibold text-foreground">Marketing Flyer (Images)</label>
                   <input
                     type="file"
                     name="marketingFlyer"
-                    accept=".pdf"
+                    accept="image/*"
                     onChange={handleFileChange}
                     className="px-4 py-2.5 rounded-lg border border-border bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-primary/10 file:text-primary"
                   />
@@ -481,11 +481,11 @@ export default function RecruitmentForm({ id }: { id?: string }) {
                 </div>
 
                 <div className="flex flex-col gap-2">
-                  <label className="text-sm font-semibold text-foreground">Vacancy Flyer (Images)</label>
+                  <label className="text-sm font-semibold text-foreground">Vacancy Flyer (PDF)</label>
                   <input
                     type="file"
                     name="vacancyFlyer"
-                    accept="image/*"
+                    accept=".pdf"
                     onChange={handleFileChange}
                     className="px-4 py-2.5 rounded-lg border border-border bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-primary/10 file:text-primary"
                   />
