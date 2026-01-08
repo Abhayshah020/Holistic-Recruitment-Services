@@ -514,24 +514,18 @@ export default function ViewPage() {
                                 <div className="space-y-2">
                                     <a
                                         href={mockData.referralLink}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
                                         className="text-primary hover:underline text-sm block"
                                     >
                                         Referral Link →
                                     </a>
                                     <a
                                         href={mockData.candidatesReferredFor}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
                                         className="text-primary hover:underline text-sm block"
                                     >
                                         Candidates Referred For →
                                     </a>
                                     <a
                                         href={mockData.candidatesInterviewingFor}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
                                         className="text-primary hover:underline text-sm block"
                                     >
                                         Candidates Interviewing For →
