@@ -155,6 +155,13 @@ export default function TablePage() {
     const [totalPages, setTotalPages] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(5);
 
+    useEffect(() => {
+        const user = sessionStorage.getItem("user")
+        if (!user) return;
+        setUser(JSON.parse(user))
+    }, [])
+
+
     const handlePrevPage = () => {
         if (currentPage > 1) setCurrentPage(currentPage - 1);
     };
@@ -162,11 +169,6 @@ export default function TablePage() {
     const handleNextPage = () => {
         if (currentPage < totalPages) setCurrentPage(currentPage + 1);
     };
-
-    useEffect(() => {
-        const user = sessionStorage.getItem("user")
-        if (user) setUser(JSON.parse(user))
-    }, [])
 
     const handleFetch = async () => {
         try {
@@ -194,9 +196,11 @@ export default function TablePage() {
     }
 
     useEffect(() => {
+        if (!user) return;
         handleFetch();
-    }, [currentPage, itemsPerPage])
+    }, [currentPage, itemsPerPage, user])
 
+    if (!user) return <>Loading....</>
 
     return (
         <>
