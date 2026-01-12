@@ -3,6 +3,7 @@
 import ConfirmModal from "@/components/ConfirmModal"
 import Footer from "@/components/footer"
 import Navbar from "@/components/navbar"
+import { Pagination } from "@/components/Pagination"
 import { Card } from "@/components/ui/card"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import axiosClient from "@/lib/axiosClient"
@@ -151,6 +152,17 @@ export default function TablePage() {
     const [user, setUser] = useState<any>(null)
     const [deleteId, setDeleteId] = useState<string | null>(null)
     const router = useRouter()
+    const [currentPage, setCurrentPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
+    const [itemsPerPage, setItemsPerPage] = useState(5);
+
+    const handlePrevPage = () => {
+        if (currentPage > 1) setCurrentPage(currentPage - 1);
+    };
+
+    const handleNextPage = () => {
+        if (currentPage < totalPages) setCurrentPage(currentPage + 1);
+    };
 
     useEffect(() => {
         const user = sessionStorage.getItem("user")
@@ -159,8 +171,14 @@ export default function TablePage() {
 
     const handleFetch = async () => {
         try {
-            await axiosClient.get("/recruitment-forms/").then(res => {
+            await axiosClient.get("/recruitment-forms/", {
+                params: {
+                    page: currentPage,
+                    limit: itemsPerPage,
+                },
+            }).then(res => {
                 setMockData(res.data.data || [])
+                setTotalPages(Number(res.data.total) / Number(res.data.pageSize));
             })
         } catch (error) {
             console.log("🚀 ~ handleFetch ~ error:", error)
@@ -297,6 +315,8 @@ export default function TablePage() {
                         </table>
                     </Card>
                 </div>
+
+                <Pagination totalPages={totalPages} handlePrevPage={handlePrevPage} handleNextPage={handleNextPage} currentPage={currentPage} itemsPerPage={itemsPerPage} onItemsPerPageChange={(size: any) => { setItemsPerPage(size); setCurrentPage(1) }} />
 
                 <p className="text-sm text-muted-foreground">
                     Total Records: {mockData.length}
