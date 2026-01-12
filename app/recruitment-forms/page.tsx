@@ -153,6 +153,7 @@ export default function TablePage() {
     const router = useRouter()
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
+    const [totalData, setTotalData] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(5);
 
     useEffect(() => {
@@ -180,6 +181,7 @@ export default function TablePage() {
             }).then(res => {
                 setMockData(res.data.data || [])
                 setTotalPages(Math.ceil(Number(res.data.total) / Number(res.data.pageSize)));
+                setTotalData(Number(res.data.total))
             })
         } catch (error) {
             console.log("🚀 ~ handleFetch ~ error:", error)
@@ -322,7 +324,7 @@ export default function TablePage() {
                 <Pagination totalPages={totalPages} handlePrevPage={handlePrevPage} handleNextPage={handleNextPage} currentPage={currentPage} itemsPerPage={itemsPerPage} onItemsPerPageChange={(size: any) => { setItemsPerPage(size); setCurrentPage(1) }} />
 
                 <p className="text-sm text-muted-foreground">
-                    Total Records: {mockData.length}
+                    Total Records: {totalData}
                 </p>
             </main>
 
