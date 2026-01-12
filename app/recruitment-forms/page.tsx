@@ -147,7 +147,6 @@ function Cell({ column, value }: { column: any; value: any }) {
 /* ================= PAGE ================= */
 
 export default function TablePage() {
-    const [selectedRecord, setSelectedRecord] = useState<RecruitmentRecord | null>(null)
     const [mockData, setMockData] = useState<RecruitmentRecord[]>([])
     const [user, setUser] = useState<any>(null)
     const [deleteId, setDeleteId] = useState<string | null>(null)
@@ -178,7 +177,7 @@ export default function TablePage() {
                 },
             }).then(res => {
                 setMockData(res.data.data || [])
-                setTotalPages(Number(res.data.total) / Number(res.data.pageSize));
+                setTotalPages(Math.ceil(Number(res.data.total) / Number(res.data.pageSize)));
             })
         } catch (error) {
             console.log("🚀 ~ handleFetch ~ error:", error)
@@ -196,7 +195,7 @@ export default function TablePage() {
 
     useEffect(() => {
         handleFetch();
-    }, [])
+    }, [currentPage, itemsPerPage])
 
 
     return (
