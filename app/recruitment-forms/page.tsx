@@ -288,7 +288,7 @@ export default function TablePage() {
                                     <tr key={record.id} className="border-t hover:bg-muted/50">
                                         {COLUMNS.map(col => (
                                             <td key={col.key} className="px-4 py-3">
-                                                <Cell column={col} value={(record as any)[col.key]} />
+                                                {col.type === "tags" ? (<Cell column={col} value={(record as any)[col.key].length > 0 && (record as any)[col.key][0]} />):(<Cell column={col} value={(record as any)[col.key]} />)}
                                             </td>
                                         ))}
                                         <td className="px-4 py-3 flex gap-2">
