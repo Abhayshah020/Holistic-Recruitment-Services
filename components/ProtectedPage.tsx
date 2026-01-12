@@ -12,24 +12,38 @@ export default function ProtectedPage({ children }: Props) {
   const pathname = usePathname();
 
   useEffect(() => {
-    // 🔒 Protected routes
-    const isProtectedRoute =
-      pathname.startsWith("/recruitment-forms")
-
-    if (!isProtectedRoute) return;
+    // Only protect recruitment-forms routes
+    const isRecruitmentRoute = pathname.startsWith("/recruitment-forms");
+    if (!isRecruitmentRoute) return;
 
     const userRaw = sessionStorage.getItem("user");
-
     if (!userRaw) {
       router.replace("/login");
       return;
     }
 
     const user = JSON.parse(userRaw);
+    const role = user?.role;
 
-    if (user.role !== "admin") {
-      router.replace("/unauthorized-page");
-    }
+    // Routes allowed for both admin & employee
+    const employeeAllowedRoutes = [
+      "/recruitment-forms",
+      "/recruitment-forms/view",
+    ];
+
+    const isEmployeeAllowed =
+      employeeAllowedRoutes.some(route =>
+        pathname === route || pathname.startsWith(`${route}/`)
+      );
+
+    // Admin can access everything
+    if (role === "admin") return;
+
+    // Employee can access only allowed routes
+    if (role === "employee" && isEmployeeAllowed) return;
+
+    // Otherwise → unauthorized
+    router.replace("/unauthorized-page");
   }, [pathname, router]);
 
   return <>{children}</>;
