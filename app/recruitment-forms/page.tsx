@@ -190,8 +190,9 @@ export default function TablePage() {
 
     const handleDelete = async (id: string) => {
         try {
-            const res = await axiosClient.delete(`/recruitment-forms/${id}`)
+            await axiosClient.delete(`/recruitment-forms/${id}`)
             handleFetch();
+            setDeleteId(null)
         } catch (error) {
             console.log("🚀 ~ handleFetch ~ error:", error)
         }

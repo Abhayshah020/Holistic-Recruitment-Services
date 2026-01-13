@@ -4,6 +4,8 @@ import { useEffect, useState } from "react"
 import Link from "next/link"
 import axiosClient from "@/lib/axiosClient"
 import ConfirmModal from "@/components/ConfirmModal"
+import { Eye, Trash } from "lucide-react"
+import { useRouter } from "next/navigation"
 
 interface AgentReferral {
     id: number
@@ -20,6 +22,14 @@ export default function AgentReferralList() {
     const [data, setData] = useState<AgentReferral[]>([])
     const [loading, setLoading] = useState(true)
     const [deleteId, setDeleteId] = useState<any | null>(null)
+    const router = useRouter()
+    const [user, setUser] = useState<any>(null)
+
+    useEffect(() => {
+        const user = sessionStorage.getItem("user")
+        if (!user) return;
+        setUser(JSON.parse(user))
+    }, [])
 
     useEffect(() => {
         fetchData()
@@ -40,6 +50,7 @@ export default function AgentReferralList() {
         try {
             await axiosClient.delete(`/agent-referrals/${id}`)
             fetchData();
+            setDeleteId(null)
         } catch (error) {
             console.log("🚀 ~ handleFetch ~ error:", error)
         }
@@ -115,19 +126,21 @@ export default function AgentReferralList() {
                                     <Td>
                                         {new Date(item.createdAt).toLocaleDateString()}
                                     </Td>
-                                    <Td>
-                                        <Link
-                                            href={`/recruitment-forms/agent-referral/view/${item.id}`}
-                                            className="font-medium text-black underline"
-                                        >
-                                            View
-                                        </Link>
-                                        <button
-                                            onClick={()=> setDeleteId(item.id)}
-                                            className="font-medium text-black underline"
-                                        >
-                                            Delete
-                                        </button>
+                                    <Td >
+                                        <Eye
+                                            size={18}
+                                            className="cursor-pointer text-primary"
+                                            onClick={() => router.push(`/recruitment-forms/agent-referral/view/${item.id}`)}
+                                        />
+                                        {!!user && user?.role === "admin" && (
+                                            <>
+                                                <Trash
+                                                    size={18}
+                                                    className="cursor-pointer text-destructive"
+                                                    onClick={() => setDeleteId(item.id)}
+                                                />
+                                            </>
+                                        )}
                                     </Td>
                                 </tr>
                             ))
